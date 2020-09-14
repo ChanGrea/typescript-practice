@@ -17,18 +17,18 @@ class Counter extends React.Component<CounterProps, CounterState> {
   }
 
   componentDidMount() {
-    setInterval(this.increase, 1000)
+    setInterval(this.increase, 1000);
   }
 
   increase = () => {
     const { count } = this.state;
     this.setState({ count: count + 1 });
-  }
+  };
 
   render() {
     const { name } = this.props;
     const { count } = this.state;
-    
+
     return (
       <React.Fragment>
         <h1>{name} counter</h1>
