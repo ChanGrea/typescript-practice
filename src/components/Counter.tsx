@@ -1,41 +1,18 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 
-interface CounterProps {
-  name: string;
-}
-
-interface CounterState {
-  count: number;
-}
-
-class Counter extends React.Component<CounterProps, CounterState> {
-  constructor(props: CounterProps) {
-    super(props);
-    this.state = {
-      count: 0,
-    };
-  }
-
-  componentDidMount() {
-    setInterval(this.increase, 1000);
-  }
-
-  increase = () => {
-    const { count } = this.state;
-    this.setState({ count: count + 1 });
-  };
-
-  render() {
-    const { name } = this.props;
-    const { count } = this.state;
-
-    return (
-      <React.Fragment>
-        <h1>{name} counter</h1>
-        <div>count value: {count}</div>
-      </React.Fragment>
-    );
-  }
+function Counter() {
+  const [count, setCount] = useState(0);
+  const onIncrease = () => setCount(count + 1);
+  const onDecrease = () => setCount(count - 1);
+  return (
+    <div>
+      <h1>{count}</h1>
+      <div>
+        <button onClick={onIncrease}>+1</button>
+        <button onClick={onDecrease}>-1</button>
+      </div>
+    </div>
+  );
 }
 
 export default Counter;
